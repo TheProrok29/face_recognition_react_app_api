@@ -1,6 +1,5 @@
 const expresss = require('express');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
 
 const app = expresss();
 
@@ -12,6 +11,7 @@ const database = {
             id: '123',
             name: 'Tom',
             email: 'tom@gmail.com',
+            password: 'password',
             entries: 0,
             joined: new Date()
         },
@@ -19,15 +19,9 @@ const database = {
             id: '1234',
             name: 'Ida',
             email: 'ida@gmail.com',
+            password: 'password2',
             entries: 0,
             joined: new Date()
-        }
-    ],
-    login: [
-        {
-            id: '987',
-            hash: '',
-            email: 'tom@gmail.com'
         }
     ]
 }
@@ -36,9 +30,6 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signin', (req, res) => {
-    bcrypt.compare('password2', '$2a$10$yFfTJU4/i.ijFdjXh3L5Puff/C8jbz4RbLktk2wkPbkeEnX81mmdW', function (err, res) {
-        console.log(res);
-    });
     if (req.body.email === database.users[0].email &&
         req.body.password === database.users[0].password) {
         res.json('success');
