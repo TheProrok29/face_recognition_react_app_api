@@ -1,9 +1,10 @@
 const expresss = require('express');
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const app = expresss();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const database = {
     users: [
