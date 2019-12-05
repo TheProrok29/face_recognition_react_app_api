@@ -40,12 +40,11 @@ app.post('/signin', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-    const { email, name, password } = req.body;
+    const { email, name } = req.body;
     database.users.push({
         id: '12345',
         name: name,
         email: email,
-        password: password,
         entries: 0,
         joined: new Date()
     });
